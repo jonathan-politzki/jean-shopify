@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "@shopify/shopify-app-remix": "^3.4.0",
+    "@shopify/shopify-app-session-storage-prisma": "^5.1.5",
+    "@supabase/supabase-js": "^2.46.1",
+    "openai": "^4.73.0"
+  },
+  "scripts": {
+    "dev": "shopify app dev",
+    "build": "remix build",
+    "deploy": "shopify app deploy",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate deploy"
+  }
+}

@@ -1,6 +1,6 @@
 const JeanPersonalize = {
     open: function() {
-      // Will implement OAuth redirect here
-      window.location.href = '/apps/jean-personal-shopper/auth';
+        // Ensure this matches your app's public domain and route
+        window.location.href = 'https://jean-personalization.myshopify.com/apps/jean-personal-shopper/auth';
     }
-  };
+};

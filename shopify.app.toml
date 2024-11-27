@@ -1,0 +1,23 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "c32e3e172b1edd86b736629282230533"
+application_url = "https://example.com/"
+embedded = true
+name = "jean-personal-shopper"
+handle = "jean-personal-shopper"
+
+[webhooks]
+api_version = "2024-10"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [ "https://example.com/api/auth" ]
+
+[pos]
+embedded = false
+
+[build]
+dev_store_url = "jean-personalization.myshopify.com"

@@ -1,15 +1,14 @@
-import { authenticate } from "~/lib/shopify.server";
-import { jeanClient } from "~/lib/jean-client";
+// app/routes/auth/callback.tsx
+import { redirect } from "@remix-run/node";
+import { createClient } from '@/lib/supabase/server';
 
 export async function loader({ request }) {
-  const { session } = await authenticate.admin(request);
-  
-  // Handle Jean authentication callback
+  const supabase = await createClient();
   const { searchParams } = new URL(request.url);
   const code = searchParams.get('code');
 
   if (code) {
-    await jeanClient.auth.exchangeCodeForSession(code);
+    await supabase.auth.exchangeCodeForSession(code);
   }
 
   return redirect("/");

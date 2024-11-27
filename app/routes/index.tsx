@@ -1,11 +1,11 @@
 // app/routes/index.tsx
 import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, useActionData } from "@remix-run/react";
 import { authenticate } from "~/lib/shopify.server";
 import { createClient } from "~/lib/supabase/server";
 import { AuthFlow } from "~/components/AuthFlow";
 import { PersonalityLink } from "~/components/PersonalityLink";
-import { ProductRecommendation } from "~/components/ProductRecommendation";
+import { ProductRecommendations } from "~/components/ProductRecommendations";
 
 export async function loader({ request }) {
   // Verify Shopify context
@@ -23,26 +23,42 @@ export async function loader({ request }) {
 
 export default function Index() {
   const { isAuthenticated, user } = useLoaderData<typeof loader>();
+  const actionData = useActionData();
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-8">Jean Personal Shopper</h1>
-      
-      {!isAuthenticated ? (
-        <AuthFlow />
-      ) : (
+    <div className="min-h-screen bg-gray-50 py-12">
+      <div className="max-w-4xl mx-auto px-4">
+        <h1 className="text-3xl font-bold text-center mb-8">
+          Jean Personal Shopper
+        </h1>
+        
         <div className="space-y-8">
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-lg font-semibold mb-4">Welcome {user.email}</h2>
-            <PersonalityLink />
-          </div>
-          
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-lg font-semibold mb-4">Your Recommendations</h2>
-            <ProductRecommendation />
-          </div>
+          {!isAuthenticated ? (
+            <div className="bg-white p-8 rounded-lg shadow-sm max-w-md mx-auto">
+              <h2 className="text-xl font-semibold mb-6">Get Started</h2>
+              <AuthFlow />
+            </div>
+          ) : (
+            <>
+              <div className="bg-white p-8 rounded-lg shadow-sm">
+                <h2 className="text-xl font-semibold mb-6">
+                  Welcome, {user.email}
+                </h2>
+                <PersonalityLink />
+              </div>
+
+              {actionData?.products && (
+                <div className="bg-white p-8 rounded-lg shadow-sm">
+                  <h2 className="text-xl font-semibold mb-6">
+                    Your Personalized Recommendations
+                  </h2>
+                  <ProductRecommendations products={actionData.products} />
+                </div>
+              )}
+            </>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

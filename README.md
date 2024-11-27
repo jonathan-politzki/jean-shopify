@@ -1,101 +1,203 @@
-# Jean Personal Shopper - Shopify App
+# Jean Personal Shopper
 
-## Overview
-Jean Personal Shopper is a Shopify app that instantly personalizes product recommendations for shoppers based on their digital presence. Rather than waiting for behavioral data or requiring lengthy questionnaires, the app provides immediate personalization through a simple, user-friendly flow:
+> "Zero to Personalization: Solving E-commerce's Cold Start Problem"
 
-1. Customer sees a "Personalize My Shopping" popup while browsing
-2. Clicks to securely connect (OAuth via Google/LinkedIn)
-3. Provides a single link that best represents their personality (social profile, blog, etc.)
-4. Receives instant, AI-powered product recommendations tailored to their personality
+## System Architecture
 
-Think of it as a digital personal shopper that instantly understands a customer's style and preferences through their online presence.
+```mermaid
+graph TD
+    A[Shopify Store] -->|Install App| B[Jean Personal Shopper]
+    C[Customer] -->|Social OAuth| D[Jean Technologies]
+    D -->|User Understanding| E[Vector DB]
+    E -->|Embeddings| F[Product Matching]
+    F -->|Personalized Products| A
+    
+    subgraph Jean Infrastructure
+        D[AI Understanding Engine]
+        E[Vector Database]
+        F[Recommendation Engine]
+    end
 
-## Current Implementation
+    subgraph User Flow
+        C -->|1. Visit Store| A
+        C -->|2. One-Click Auth| D
+        C -->|3. Get Recommendations| F
+    end
+```
 
-### Core Components
-- `AuthFlow`: Handles secure OAuth integration with Jean Technologies infrastructure
-- `PersonalityLink`: UI for collecting user's representative link
-- `ProductRecommendations`: Displays personalized product suggestions
-- Shopify theme extension for the popup integration
+## The Cold Start Problem
 
-### Key Features Implemented
-- Basic app scaffold with Remix + Shopify
-- Database schema for storing user preferences and recommendations
-- Integration points with Jean Technologies OAuth
-- Theme extension structure for merchant stores
+Every e-commerce platform faces the same challenge: new users start with generic, unpersonalized experiences. Traditional solutions require:
 
-## Immediate Next Steps for MVP
+- Weeks of behavioral data collection
+- Multiple site visits
+- Purchase history accumulation
+- Extensive user tracking
 
-### 1. Authentication Flow (High Priority)
-- [ ] Complete OAuth callback handling in `app/routes/auth/callback.tsx`
-- [ ] Implement proper session management
-- [ ] Test end-to-end authentication flow
+This leads to lost engagement, reduced conversions, and missed revenue in the critical first customer interactions.
 
-### 2. Core Functionality
-- [ ] Implement personality link submission and storage
-- [ ] Set up OpenAI integration for analyzing user personality
-- [ ] Connect to Shopify's product API for recommendations
-- [ ] Implement the recommendation algorithm
+## Our Solution: Instant Understanding
 
-### 3. UI/UX Implementation
-- [ ] Style the popup for merchant stores
-- [ ] Create a smooth transition between authentication and link submission
-- [ ] Design and implement the recommendation display
+Jean Personal Shopper revolutionizes e-commerce personalization by providing immediate, AI-powered product recommendations from the first visit:
 
-### 4. Testing & Deployment
-- [ ] Set up proper error handling
-- [ ] Add logging for debugging
-- [ ] Create test merchant store
-- [ ] Prepare for Shopify app store submission
+- **Instant Connection:** One-click social authentication
+- **Deep Understanding:** AI-powered personality analysis
+- **Immediate Value:** Personalized recommendations in seconds
+- **User Control:** Privacy-first, opt-in personalization
 
-## Technical Details
+## Technical Architecture
 
-### Structure
+### Core Infrastructure
+
+- **Frontend:** Remix + Shopify App Framework
+- **Authentication:** Dual-layer (Shopify Admin + Supabase User)
+- **AI Engine:** OpenAI API for embeddings
+- **Vector Store:** Supabase pgvector
+- **Data Flow:** Jean Technologies embedding protocol
+
+### System Components
+
 ```
 jean-shopify/
-├── app/                      # Main application code
-│   ├── components/           # React components
-│   ├── lib/                  # Shared utilities
-│   └── routes/              # API and page routes
-├── extensions/               # Shopify theme extension
-└── prisma/                  # Database schema
+├── app/
+│   ├── components/          # React UI components
+│   │   ├── AuthFlow        # OAuth handling
+│   │   ├── PersonalityLink # User context
+│   │   └── ProductRecs     # Recommendations
+│   ├── lib/
+│   │   ├── supabase/      # Database & auth
+│   │   └── shopify/       # Store integration
+│   └── routes/            # App routing & API
+├── extensions/            # Shopify theme extension
+└── supabase/             # Database schema & functions
 ```
 
-### Key Files
-- `app.embed.liquid`: Shopify theme integration
-- `personality.ts`: Handles personality link submission
-- `recommendations.ts`: Generates product recommendations
-- `shopify.server.ts`: Shopify API integration
-- `jean-client.ts`: Integration with Jean Technologies
+## Key Features
 
-## Getting Started
-1. Install dependencies: `npm install`
-2. Set up environment variables (see `.env.example`)
-3. Run migrations: `npx prisma migrate dev`
-4. Start development server: `npm run dev`
+### Authentication Flow
 
-## Critical Path to MVP
-1. Complete authentication flow
-2. Implement basic personality link collection
-3. Set up simple recommendation generation
-4. Deploy to test store
-5. Gather initial feedback
-6. Submit to Shopify app store
+```mermaid
+sequenceDiagram
+    Customer->>Store: Visit
+    Store->>Jean: Request Auth
+    Jean->>OAuth: Social Login
+    OAuth->>Jean: User Profile
+    Jean->>Store: Personalized Experience
+```
 
-## Future Enhancements
-- Enhanced personality analysis
-- Product matching refinement
-- Merchant dashboard for analytics
-- A/B testing different recommendation strategies
-- Multi-platform social integration
+### Data Flow
 
-## Resources
-- [Shopify App Documentation](https://shopify.dev/docs/apps)
-- [Jean Technologies Documentation](link-to-your-docs)
-- [OpenAI API Documentation](https://platform.openai.com/docs)
+1. User authorizes via social platform
+2. Profile analyzed by Jean's AI
+3. Embeddings generated and stored
+4. Products matched using vector similarity
+5. Recommendations delivered to store
 
-## Notes for Developers
-- Pay attention to Shopify's rate limits
-- Be mindful of OpenAI token usage
-- Follow Shopify's security best practices
-- Test thoroughly with multiple store themes
+## Development Setup
+
+### Prerequisites
+
+#### Required accounts
+- Shopify Partner Account
+- Jean Technologies API access
+- Supabase Project
+
+#### Environment Variables
+```bash
+SHOPIFY_API_KEY=your_key
+SHOPIFY_API_SECRET=your_secret
+NEXT_PUBLIC_SUPABASE_URL=your_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key
+OPENAI_API_KEY=your_key
+```
+
+### Quick Start
+
+```bash
+# Install dependencies
+npm install
+
+# Start development
+npm run dev
+
+# Deploy to Shopify
+npm run deploy
+```
+
+## Integration Points
+
+### Jean Technologies
+- Shared Supabase instance
+- Common authentication flow
+- Unified vector space
+- Recommendation engine
+
+### Shopify
+- Admin authentication
+- Product catalog access
+- Theme integration
+- Store customization
+
+## Current Status
+
+### Implemented
+✅ Basic Shopify app scaffold
+✅ Supabase authentication
+✅ Social platform integration
+✅ Vector similarity search
+
+### In Progress
+🔄 Enhanced user understanding
+🔄 Product matching refinement
+🔄 Merchant analytics
+🔄 A/B testing framework
+
+## Future Roadmap
+
+### Near Term
+- Advanced personality analysis
+- Enhanced product matching
+- Merchant dashboard
+- Performance optimization
+
+### Long Term
+- Custom embedding models
+- Real-time personalization
+- Multi-platform integration
+- Advanced analytics
+
+## Developer Notes
+
+### Critical Considerations
+
+#### Session Management
+- Handle both Shopify and Supabase sessions
+- Implement token refresh (24h expiry)
+- Maintain session sync
+
+#### Data Flow
+- Secure OAuth token handling
+- RLS policy implementation
+- Rate limit management
+
+#### Performance
+- Vector similarity optimization
+- Product catalog caching
+- Response time monitoring
+
+## Support & Resources
+
+- [Jean Technologies Documentation]()
+- [Shopify App Development]()
+- [Supabase Documentation]()
+- Technical Support: support@jean.tech
+
+## Contributing
+See CONTRIBUTING.md for development guidelines.
+
+## License
+Proprietary. Copyright © 2024 Jean Technologies Inc.
+
+---
+
+Built with Jean Technologies

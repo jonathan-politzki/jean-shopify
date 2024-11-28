@@ -1,24 +1,24 @@
-# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
-
-client_id = "c32e3e172b1edd86b736629282230533"
-application_url = "https://example.com/"
-embedded = true
+# shopify.app.toml
 name = "jean-personal-shopper"
-handle = "jean-personal-shopper"
-
-[webhooks]
-api_version = "2024-10"
+client_id = "c32e3e172b1edd86b736629282230533"
+application_url = "https://jean-personal-shopper.ngrok.io"
+auth_callback_path = "/auth/callback"
+embedded = true
 
 [access_scopes]
-# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
 scopes = "write_products"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [
+  "https://jean-personal-shopper.ngrok.io/auth/callback",
+  "https://jean-personal-shopper.ngrok.io/api/auth"
+]
+
+[webhooks]
+api_version = "2024-10"
 
 [pos]
 embedded = false
 
 [build]
 dev_store_url = "jean-personalization.myshopify.com"
-include_config_on_deploy = true

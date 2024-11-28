@@ -1,7 +1,7 @@
 # shopify.app.toml
 name = "jean-personal-shopper"
 client_id = "c32e3e172b1edd86b736629282230533"
-application_url = "https://jean-personal-shopper.ngrok.io"
+application_url = "https://b8be-2601-246-4100-39f0-210e-5aee-1fa5-6071.ngrok-free.app"
 auth_callback_path = "/auth/callback"
 embedded = true
 
@@ -10,8 +10,8 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://jean-personal-shopper.ngrok.io/auth/callback",
-  "https://jean-personal-shopper.ngrok.io/api/auth"
+  "https://b8be-2601-246-4100-39f0-210e-5aee-1fa5-6071.ngrok-free.app/auth/callback",
+  "https://b8be-2601-246-4100-39f0-210e-5aee-1fa5-6071.ngrok-free.app/api/auth"
 ]
 
 [webhooks]

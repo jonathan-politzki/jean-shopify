@@ -1,19 +1,21 @@
-// root/app/routes/index.tsx
+// app/routes/index.tsx
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { authenticate } from "../shopify.server";
+import { authenticate } from "../lib/shopify.server";
 import {
   Page,
   Layout,
   Text,
   Card,
   Button,
+  BlockStack,
 } from "@shopify/polaris";
+import { PersonalityLink } from "../components/PersonalityLink";
 
 export const loader = async ({ request }) => {
   await authenticate.admin(request);
   return json({ 
-    message: "App successfully loaded!" 
+    message: "Welcome to Jean Personal Shopper" 
   });
 };
 
@@ -24,19 +26,27 @@ export default function Index() {
     <Page>
       <Layout>
         <Layout.Section>
-          <Card>
-            <Text variant="headingMd" as="h2">
-              {message}
-            </Text>
-            <Button 
-              primary 
-              onClick={() => {
-                alert("Button clicked!")
-              }}
-            >
-              Test Button
-            </Button>
-          </Card>
+          <BlockStack gap="500">
+            <Card>
+              <BlockStack gap="400">
+                <Text variant="headingMd" as="h2">
+                  {message}
+                </Text>
+                <Text>
+                  Let's help your customers find the perfect products for them.
+                </Text>
+              </BlockStack>
+            </Card>
+
+            <Card>
+              <BlockStack gap="400">
+                <Text variant="headingMd" as="h3">
+                  Get Product Recommendations
+                </Text>
+                <PersonalityLink />
+              </BlockStack>
+            </Card>
+          </BlockStack>
         </Layout.Section>
       </Layout>
     </Page>

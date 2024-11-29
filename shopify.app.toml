@@ -2,7 +2,7 @@
 
 name = "jean-personal-shopper"
 client_id = "c32e3e172b1edd86b736629282230533"
-application_url = "https://irrigation-ar-australia-generators.trycloudflare.com"
+application_url = "https://textbooks-quoted-ahead-alfred.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products,read_products"
 
 [auth]
 redirect_urls = [
-  "https://irrigation-ar-australia-generators.trycloudflare.com/auth/callback",
-  "https://irrigation-ar-australia-generators.trycloudflare.com/auth/shopify/callback",
-  "https://irrigation-ar-australia-generators.trycloudflare.com/api/auth/callback"
+  "https://textbooks-quoted-ahead-alfred.trycloudflare.com/auth/callback",
+  "https://textbooks-quoted-ahead-alfred.trycloudflare.com/auth/shopify/callback",
+  "https://textbooks-quoted-ahead-alfred.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

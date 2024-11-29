@@ -1,3 +1,5 @@
 /node_modules
 .env
+package-lock.jsonweb/
+web/
 package-lock.json

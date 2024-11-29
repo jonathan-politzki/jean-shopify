@@ -1,7 +1,8 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
 name = "jean-personal-shopper"
 client_id = "c32e3e172b1edd86b736629282230533"
-application_url = "https://865c-2601-246-4100-39f0-5847-9fbd-456e-cdf3.ngrok-free.app"
+application_url = "https://4e8e-2601-246-4100-39f0-5847-9fbd-456e-cdf3.ngrok-free.app"
 embedded = true
 
 [access_scopes]
@@ -10,7 +11,7 @@ scopes = "write_products,read_products,write_customers,read_customers"
 
 [auth]
 redirect_urls = [
-  "https://865c-2601-246-4100-39f0-5847-9fbd-456e-cdf3.ngrok-free.app/auth/callback"
+  "https://4e8e-2601-246-4100-39f0-5847-9fbd-456e-cdf3.ngrok-free.app/auth/callback"
 ]
 
 [webhooks]

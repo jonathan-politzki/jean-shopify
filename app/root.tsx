@@ -7,7 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { AppProvider } from "@shopify/shopify-app-remix";
+import { createClient } from "@shopify/app-bridge";
 
 export default function App() {
   return (
@@ -19,9 +19,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <AppProvider isEmbeddedApp>
-          <Outlet />
-        </AppProvider>
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

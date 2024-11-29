@@ -1,0 +1,7 @@
+# Web process configuration
+type = "frontend"
+port = 8081
+
+[commands]
+dev = "npx remix dev --port 8081"
+build = "npx remix build"

@@ -1,7 +1,8 @@
-# shopify.app.toml
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
 name = "jean-personal-shopper"
 client_id = "c32e3e172b1edd86b736629282230533"
-application_url = "https://865c-2601-246-4100-39f0-5847-9fbd-456e-cdf3.ngrok-free.app"
+application_url = "https://irrigation-ar-australia-generators.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -9,7 +10,11 @@ embedded = true
 scopes = "write_products,read_products"
 
 [auth]
-redirect_urls = [ "https://865c-2601-246-4100-39f0-5847-9fbd-456e-cdf3.ngrok-free.app/auth/callback" ]
+redirect_urls = [
+  "https://irrigation-ar-australia-generators.trycloudflare.com/auth/callback",
+  "https://irrigation-ar-australia-generators.trycloudflare.com/auth/shopify/callback",
+  "https://irrigation-ar-australia-generators.trycloudflare.com/api/auth/callback"
+]
 
 [webhooks]
 api_version = "2024-01"
@@ -17,3 +22,6 @@ api_version = "2024-01"
 [pos]
 embedded = false
 
+[build]
+dev_store_url = "jean-personalization.myshopify.com"
+automatically_update_urls_on_dev = true

@@ -1,15 +1,29 @@
 {
-  "dependencies": {
-    "@shopify/shopify-app-remix": "^3.4.0",
-    "@shopify/shopify-app-session-storage-prisma": "^5.1.5",
-    "@supabase/supabase-js": "^2.46.1",
-    "openai": "^4.73.0"
-  },
+  "name": "jean-shopify",
+  "private": true,
   "scripts": {
-    "dev": "shopify app dev",
     "build": "remix build",
-    "deploy": "shopify app deploy",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate deploy"
+    "dev": "shopify app dev",
+    "deploy": "shopify app deploy"
+  },
+  "dependencies": {
+    "@remix-run/node": "^2.3.1",
+    "@remix-run/react": "^2.3.1",
+    "@shopify/app-bridge": "^3.7.9",
+    "@shopify/polaris": "^12.0.0",
+    "@shopify/shopify-app-remix": "^2.1.0",
+    "isbot": "^3.6.8",
+    "openai": "^4.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^2.3.1",
+    "@shopify/app": "3.49.7",
+    "@types/react": "^18.2.38",
+    "typescript": "^5.3.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

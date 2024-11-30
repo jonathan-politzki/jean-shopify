@@ -11,7 +11,7 @@ import { LogSeverity } from "@shopify/shopify-api";
 const shopify = shopifyApp({
   apiKey: process.env.SHOPIFY_API_KEY || "",
   apiSecretKey: process.env.SHOPIFY_API_SECRET || "",
-  appUrl: process.env.SHOPIFY_APP_URL || "https://b7cc-2601-246-4100-39f0-5847-9fbd-456e-cdf3.ngrok-free.app",
+  appUrl: process.env.SHOPIFY_APP_URL || "https://ffc2-2601-246-4100-39f0-5847-9fbd-456e-cdf3.ngrok-free.app",
   apiVersion: LATEST_API_VERSION,
   scopes: "write_products,read_products,write_customers,read_customers",
   distribution: AppDistribution.AppStore,

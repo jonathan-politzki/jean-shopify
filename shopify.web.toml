@@ -1,7 +1,9 @@
-# Web process configuration
+# shopify.web.toml
 type = "frontend"
 port = 8082
 
-[commands]
+[
+commands
+]
 dev = "remix dev --port 8082"
 build = "remix build"

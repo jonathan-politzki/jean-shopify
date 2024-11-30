@@ -4,8 +4,7 @@
   "scripts": {
     "build": "remix build",
     "dev": "shopify app dev",
-    "start": "remix-serve build",
-    "deploy": "shopify app deploy"
+    "start": "remix-serve build"
   },
   "dependencies": {
     "@remix-run/node": "^2.3.1",

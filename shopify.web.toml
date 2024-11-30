@@ -1,12 +1,8 @@
 # shopify.web.toml
 type = "frontend"
-name = "jean-personal-shopper-web"
+port = 8082
 
 [commands]
-dev = "npm run dev"
-build = "npm run build"
-start = "npm run start"
-
-[configuration]
-build.cmd = "npm run build"
-build.path = "build"
+dev = "remix dev"
+build = "remix build"
+start = "remix-serve build"

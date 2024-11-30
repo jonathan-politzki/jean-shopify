@@ -3,5 +3,5 @@ type = "frontend"
 port = 8082
 
 [commands]
-dev = "npx remix dev --port 8082"
-build = "npx remix build"
+dev = "remix dev --port 8082"
+build = "remix build"

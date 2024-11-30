@@ -4,15 +4,18 @@ import {
   AppDistribution,
   DeliveryMethod,
   shopifyApp,
-  LATEST_API_VERSION,
+  LATEST_API_VERSION
 } from "@shopify/shopify-app-remix";
 
-export const authenticate = shopifyApp({
-  apiKey: process.env.SHOPIFY_API_KEY!,
-  apiSecretKey: process.env.SHOPIFY_API_SECRET!,
+const shopify = shopifyApp({
+  apiKey: process.env.SHOPIFY_API_KEY || "",
+  apiSecretKey: process.env.SHOPIFY_API_SECRET || "",
+  appUrl: process.env.SHOPIFY_APP_URL || "",
   apiVersion: LATEST_API_VERSION,
-  scopes: process.env.SCOPES?.split(","),
-  appDistribution: AppDistribution.AppStore,
+  scopes: (process.env.SCOPES || "").split(","),
+  distribution: AppDistribution.AppStore,
   deliveryMethod: DeliveryMethod.Http,
   isEmbeddedApp: true,
 });
+
+export const authenticate = shopify;

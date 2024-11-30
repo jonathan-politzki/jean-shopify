@@ -1,6 +1,6 @@
 import {
   useLoaderData
-} from "/build/_shared/chunk-4WCNU3QC.js";
+} from "/build/_shared/chunk-HLDSK3OM.js";
 import {
   createHotContext
 } from "/build/_shared/chunk-IMVQ4UV4.js";
@@ -10320,4 +10320,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   Index as default
 };
-//# sourceMappingURL=/build/routes/_index-XY7MYISZ.js.map
+//# sourceMappingURL=/build/routes/_index-7T7C2VWG.js.map
